@@ -108,6 +108,7 @@ describe(`logger E2E tests basic functionalities (middy) for runtime: ${runtime}
   describe('Context data', () => {
     it('should log context information of the function', async () => {
       const logMessages = invocationLogs[0].getFunctionLogs();
+      console.log({ logMessages });
 
       for (const message of logMessages) {
         expect(message).toContain('function_arn');
@@ -188,7 +189,7 @@ describe(`logger E2E tests basic functionalities (middy) for runtime: ${runtime}
       }
     }, TEST_CASE_TIMEOUT);
 
-    it('with clear state enabled, should not persist keys across invocations', async () => {
+    it.only('with clear state enabled, should not persist keys across invocations', async () => {
       const firstInvocationMessages = invocationLogs[0].getFunctionLogs();
       for (const message of firstInvocationMessages) {
         expect(message).toContain(`"${PERSISTENT_KEY_FIRST_INVOCATION_ONLY}":0`);

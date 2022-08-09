@@ -68,6 +68,8 @@ const testFunction = async (event: LambdaEvent, context: Context): Promise<{requ
 
   logger.info('A log entry with an object', { [ARBITRARY_OBJECT_KEY]: obj });
 
+  throw Error('This is an unexpected error!');
+
   return {
     requestId: context.awsRequestId,
   };
